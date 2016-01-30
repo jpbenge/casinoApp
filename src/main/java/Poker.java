@@ -5,7 +5,8 @@ public interface Poker {
 
     int increastAnte();
     Player compareHand();
-    default public void fold(player x){
+    default public void fold(Hand hand){
+        hand.deleteHand();
 
     }
 
@@ -14,6 +15,6 @@ public interface Poker {
     void displayAllHand();
 
     void allBet();
-
+    int rankHand();
 
 }

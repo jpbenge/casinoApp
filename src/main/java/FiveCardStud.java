@@ -1,7 +1,7 @@
 /**
  * Created by nicholaswebb on 1/29/16.
  */
-import java.util.*
+import java.util.*;
 
 public class FiveCardStud extends CardGames implements Poker {
 
@@ -16,12 +16,26 @@ public class FiveCardStud extends CardGames implements Poker {
     ArrayList<Card> npc3Hand = new ArrayList<Card>();
     ArrayList<Card> npc4Hand = new ArrayList<Card>();
 
+    public FiveCardStud(){
+
+        setUpGame();
+        collectAnte();
+        dealFirstRound();
+        betRound();
+        dealRemainingRounds();
+        betRound();
+        dealRemainingRounds();
+        betRound();
+        dealRemainingRounds();
+        betRound();
+        rankToString(rankHand())
+    }
+
     int minLimit = 10;
     int maxLimit = 100;
 
     public void setUpGame() {
-        deck.shuffle(); //shuffles our deck to begin the game
-
+        Collections.shuffle(deck); //shuffles our deck to begin the game
 
     }
     public void dealFirstRound(){
@@ -29,6 +43,18 @@ public class FiveCardStud extends CardGames implements Poker {
     }
 
     public void dealRemainingRounds(){
+
+    }
+    public void collectAnte(){
+
+
+    }
+
+    public void betRound(){
+
+    }
+
+    public int rankHand(ArrayList hands){
 
     }
 
