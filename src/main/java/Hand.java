@@ -42,4 +42,19 @@ public class Hand {
         Collections.sort(hand, (Card c1,Card c2) -> c1.getNumber() > c2.getNumber() ? -1 : c2.getNumber() > c1.getNumber() ? 1 : 0);
     }
 
+    public void display() {
+        ArrayList<String[]> cards = new ArrayList<String[]>();
+        for(Card card : hand)
+        {
+            cards.add(card.getDisplayArray());
+        }
+        for (int i = 0;i<cards.get(0).length;i++)
+        {
+            for(String[] lines : cards)
+            {
+                System.out.print(lines[i]);
+            }
+            System.out.println();
+        }
+    }
 }

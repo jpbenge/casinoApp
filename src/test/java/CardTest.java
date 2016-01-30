@@ -1,3 +1,4 @@
+import com.sun.org.apache.bcel.internal.util.Class2HTML;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
@@ -19,5 +20,19 @@ public class CardTest {
             assertTrue("card should be instantiated face up",c.isFaceUp());
             c.setFaceUp(false);
             assertFalse("card should now be face down",c.isFaceUp());
+        }
+
+        @Test
+        public void CardDisplaySpec() {
+            Card c1 = new Card(Suit.CLUBS,10);
+            c1.display();
+            Card c2 = new Card(Suit.HEARTS,11);
+            c2.display();
+            Card c3 = new Card(Suit.DIAMONDS,13);
+            c3.display();
+            Card c4 = new Card(Suit.SPADES,1);
+            c4.display();
+            c4.setFaceUp(false);
+            c4.display();
         }
 }

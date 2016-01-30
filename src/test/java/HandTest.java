@@ -18,4 +18,17 @@ public class HandTest {
         assertEquals("first card in hand's suit should be DIAMONDS", Suit.DIAMONDS,h.getHand().get(0).getSuit());
         assertEquals("first card in hand's number should be 7", 7,h.getHand().get(0).getNumber());
     }
+
+    @Test
+    public void testDisplayHandTest()
+    {
+        Hand h = new Hand();
+        h.addCard(new Card(Suit.DIAMONDS,7));
+        h.display();
+        h.addCard(new Card(Suit.HEARTS,12));
+        h.addCard(new Card(Suit.SPADES,1));
+        h.addCard(new Card(Suit.CLUBS,10));
+        h.addCard(new Card(Suit.SPADES,4));
+        h.display();
+    }
 }
