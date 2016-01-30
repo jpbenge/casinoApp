@@ -28,6 +28,8 @@ public class Card {
     public void setFaceUp(boolean f) {
         faceUp = f;
     }
+
+    public void flip() {faceUp = !faceUp; }
     //print out the card by itself
     public void display()
     {
