@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,5 +24,10 @@ public class Deck extends ArrayList<Card> {
                 }
             }
         }
+    }
+
+    public void shuffle()
+    {
+        Collections.shuffle(this);
     }
 }
