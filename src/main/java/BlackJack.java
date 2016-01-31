@@ -45,12 +45,12 @@ public class BlackJack extends CardGame {
             p.getHands().clear();
             p.getHands().add(new Hand());
         }
-        System.out.println("You have "+PlayerManager.pc.getChips()+" chips");
+        System.out.println(PlayerManager.pc.getName() + ", you have "+PlayerManager.pc.getChips()+" chips");
         System.out.println("How much would you like to bet?");
         int bet = sc.nextInt();
         sc.nextLine();
         setCurrentBet(bet, PlayerManager.pc);
-        System.out.println("Current bet: "+currentBet);
+        System.out.println(PlayerManager.pc.getName() + "'s current bet: "+currentBet);
     }
     //return the correct value for a card
     private int checkCard(Card c) {

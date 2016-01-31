@@ -37,7 +37,7 @@ abstract public class Game {
         {
             if (chips > p.getChips()) {
                 System.out.println("You do not have enough chips to place this bet.");
-                System.out.println("Current chips: "+PlayerManager.pc.getChips());
+                System.out.println(PlayerManager.pc.getName() + "'s crrent chips: "+PlayerManager.pc.getChips());
             }
             else if (chips < minLimit)
             {

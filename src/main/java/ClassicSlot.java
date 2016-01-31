@@ -71,7 +71,7 @@ public class ClassicSlot extends SlotMachines implements Slots {
             super.display(winner);
             System.out.println("Do you want to spin again?y/n");
             String restart = scan.nextLine();
-            System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
+            System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
             if (restart.toLowerCase().contains("n")) {
                 exit();
                 break;

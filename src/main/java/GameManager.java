@@ -18,12 +18,12 @@ public class GameManager {
                 String gameChoice = sc.nextLine().toLowerCase();
                 switch (gameChoice) {
                     case "blackjack":
-                        System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
+                        System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                         BlackJack blackJack = new BlackJack();
                         blackJack.start();
                         break;
                     case "5 card poker":
-                        System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
+                        System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                         //FiveCardStud fiveCardStud = new FiveCardStud();
                         //fiveCardStud.start();
                         break;
@@ -51,7 +51,7 @@ public class GameManager {
                             System.out.println("Please enter only an integer.");
                         }
                     }
-                    System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
+                    System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                     FiveReelSlot slot = new FiveReelSlot();
                     slot.start(gameMin, gameMin * 10);
                 } else if (gameChoice.contains("3")) {
@@ -69,7 +69,7 @@ public class GameManager {
                             System.out.println("Please enter only an integer.");
                         }
                     }
-                    System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
+                    System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                     ClassicSlot slot = new ClassicSlot();
                     slot.start(gameMin, gameMin * 10);
                 } else {
@@ -92,7 +92,7 @@ public class GameManager {
     }
 
     public void exit() {
-        System.out.println("You have cashed out with $" +PlayerManager.pc.getChips());
+        System.out.println(PlayerManager.pc.getName() + ", you have cashed out with $" +PlayerManager.pc.getChips());
     }
 
     public static void main(String[] args) {

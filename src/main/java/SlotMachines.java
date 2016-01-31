@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by rkelly on 1/29/16.
  */
 
-public class SlotMachines extends ChanceGames implements Slots, Cloneable {
+public class SlotMachines extends ChanceGames implements Slots {
     //ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Orange","Lemon","Money","Cherry","Heart","Orange","Diamond","Lemon","Cherry","Money","Heart","Orange","Seven","Diamond","Orange","Lemon","Money","Cherry","Heart","Diamond","Bar","Lemon","Money","Seven","Heart","Diamond","Orange","Lemon","Money","Seven","Heart","Cherry"));
     //ArrayList<String> reelOther = new ArrayList<String>(Arrays.asList("Lemon","Diamond","Orange","Heart","Cherry","Money","Lemon","Heart","Diamond","Orange","Seven","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Bar","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Money"));
     ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Money","Cherry","Heart","Diamond","Cherry","Money","Heart","Seven","Diamond","Money","Cherry","Heart","Diamond","Bar","Money","Seven","Heart","Diamond","Money","Seven","Heart","Cherry"));
@@ -268,6 +268,7 @@ public class SlotMachines extends ChanceGames implements Slots, Cloneable {
         }
         return winner;
     }
+
 
 
 }
