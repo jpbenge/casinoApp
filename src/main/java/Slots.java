@@ -11,8 +11,8 @@ public interface Slots {
     default String getBet() {
         Scanner scan = new Scanner(System.in);
         System.out.println("How much would you like to bet?");
-        String a = scan.nextLine(); ///Comment out for testing only
-        //String a = "1";//for testing only
+        //String a = scan.nextLine(); ///Comment out for testing only
+        String a = "10";//for testing only
         return a;
     }
 }

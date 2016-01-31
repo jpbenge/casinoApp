@@ -7,14 +7,15 @@ import java.util.Random;
 /**
  * Created by rkelly on 1/29/16.
  */
-public class SlotMachines extends ChanceGames implements Slots {
+public class SlotMachines extends ChanceGames implements Slots, Cloneable {
     ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Orange","Lemon","Money","Cherry","Heart","Orange","Diamond","Lemon","Cherry","Money","Heart","Orange","Seven","Diamond","Orange","Lemon","Money","Cherry","Heart","Diamond","Bar","Lemon","Money","Seven","Heart","Diamond","Orange","Lemon","Money","Seven","Heart","Cherry"));
     ArrayList<String> reelOther = new ArrayList<String>(Arrays.asList("Lemon","Diamond","Orange","Heart","Cherry","Money","Lemon","Heart","Diamond","Orange","Seven","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Bar","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Money"));
 
     ArrayList<ArrayList<String>> reels = new ArrayList<ArrayList<String>>();
 
+
     int totalReels;
-    public SlotMachines(int totalReels) {
+    public void start(int totalReels) {
         this.totalReels = totalReels;
         String a;
         boolean b = false;
@@ -31,16 +32,18 @@ public class SlotMachines extends ChanceGames implements Slots {
         setCurrentBet(c, PlayerManager.pc);
 
         ArrayList<Integer> rotations = spin(totalReels);
+        ArrayList<ArrayList> temp = new ArrayList<ArrayList>();
         for (int i = 0; i < totalReels; i++) {
             if (i == 0) {
                 Collections.rotate(reel1, rotations.get(0));
                 reels.add(reel1);
-            } else {
-                Collections.rotate(reelOther, rotations.get(i));
-                reels.add(reelOther);
+            }
+            else {
+                ArrayList copy = (ArrayList) reelOther.clone();
+                Collections.rotate(copy, rotations.get(i));
+                reels.add(copy);
             }
         }
-
     }
 
 
@@ -204,7 +207,7 @@ public class SlotMachines extends ChanceGames implements Slots {
 
     public void payOut(int a, Player player) {
         System.out.println("You have won $" + Integer.toString(a) + "!");
-        payOut(a, player);
+        super.payOut(a, player);
     }
 
     public String calculateResults(ArrayList payOuts){
@@ -212,6 +215,7 @@ public class SlotMachines extends ChanceGames implements Slots {
         for (int i = 0; i < 50;i++) {
             System.out.println();
         }
+        double top_win = 0;
         for (int i = 0; i < payOuts.size(); i ++) {
             int winning = 0;//Compared to reelsTotal
             ArrayList x = (ArrayList)payOuts.get(i);
@@ -227,12 +231,19 @@ public class SlotMachines extends ChanceGames implements Slots {
                 }
             }
             if (winning == totalReels) {
-                super.payOut((int) x.get(3), PlayerManager.pc);
-                winner = "yes";
-                break;
+                double ab = new Double(x.get(x.size() - 1).toString());
+                if (ab > top_win) {
+                    top_win = ab;
+                }
             }
         }
-
+        if (top_win > 0) {
+            int pay = (int)(top_win * (double)currentBet);
+            payOut(pay, PlayerManager.pc);
+            winner = "yes";
+        }
         return winner;
     }
+
+
 }
