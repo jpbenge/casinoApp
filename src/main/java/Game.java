@@ -14,6 +14,13 @@ abstract public class Game {
     protected int currentBet;
 
 
+    public void setMinBet(int a) {
+        minLimit = a;
+    }
+    public void setMaxBet(int a) {
+        maxLimit = a;
+    }
+
     public int getCurrentBet() {
 
         return currentBet;

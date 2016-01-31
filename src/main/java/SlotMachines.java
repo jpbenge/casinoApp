@@ -7,15 +7,19 @@ import java.util.Random;
 /**
  * Created by rkelly on 1/29/16.
  */
+
 public class SlotMachines extends ChanceGames implements Slots, Cloneable {
-    ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Orange","Lemon","Money","Cherry","Heart","Orange","Diamond","Lemon","Cherry","Money","Heart","Orange","Seven","Diamond","Orange","Lemon","Money","Cherry","Heart","Diamond","Bar","Lemon","Money","Seven","Heart","Diamond","Orange","Lemon","Money","Seven","Heart","Cherry"));
-    ArrayList<String> reelOther = new ArrayList<String>(Arrays.asList("Lemon","Diamond","Orange","Heart","Cherry","Money","Lemon","Heart","Diamond","Orange","Seven","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Bar","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Money"));
+    //ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Orange","Lemon","Money","Cherry","Heart","Orange","Diamond","Lemon","Cherry","Money","Heart","Orange","Seven","Diamond","Orange","Lemon","Money","Cherry","Heart","Diamond","Bar","Lemon","Money","Seven","Heart","Diamond","Orange","Lemon","Money","Seven","Heart","Cherry"));
+    //ArrayList<String> reelOther = new ArrayList<String>(Arrays.asList("Lemon","Diamond","Orange","Heart","Cherry","Money","Lemon","Heart","Diamond","Orange","Seven","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Bar","Money","Lemon","Heart","Diamond","Orange","Cherry","Money","Lemon","Heart","Diamond","Orange","Money"));
+    ArrayList<String> reel1 = new ArrayList<String>(Arrays.asList("Diamond","Money","Cherry","Heart","Diamond","Cherry","Money","Heart","Seven","Diamond","Money","Cherry","Heart","Diamond","Bar","Money","Seven","Heart","Diamond","Money","Seven","Heart","Cherry"));
+    ArrayList<String> reelOther = new ArrayList<String>(Arrays.asList("Diamond","Heart","Cherry","Money","Heart","Diamond","Seven","Money","Heart","Diamond","Cherry","Money","Heart","Diamond","Bar","Money","Heart","Diamond","Cherry","Money","Heart","Diamond","Money"));
 
     ArrayList<ArrayList<String>> reels = new ArrayList<ArrayList<String>>();
 
-
     int totalReels;
+
     public void start(int totalReels) {
+        reels.clear();
         this.totalReels = totalReels;
         String a;
         boolean b = false;
@@ -24,28 +28,48 @@ public class SlotMachines extends ChanceGames implements Slots, Cloneable {
             try {
                 a = getBet();
                 c = Integer.parseInt(a);
-                b = true;
+                if (PlayerManager.pc.getChips()-c >= 0) {
+                    b = true;
+                }
+                else if (PlayerManager.pc.getChips() < minLimit) {
+                    System.out.println("Error: you do not have enough chips to continue.");
+                    exit();
+                    break;
+                }
+                else {
+                    System.out.println("Error: you do not have that many chips.");
+                }
             } catch (Exception e) {
                 System.out.println("Error: please enter a valid number.");
             }
         }
-        setCurrentBet(c, PlayerManager.pc);
 
-        ArrayList<Integer> rotations = spin(totalReels);
-        ArrayList<ArrayList> temp = new ArrayList<ArrayList>();
-        for (int i = 0; i < totalReels; i++) {
-            if (i == 0) {
-                Collections.rotate(reel1, rotations.get(0));
-                reels.add(reel1);
+        if (PlayerManager.pc.getChips() > minLimit) {
+            setCurrentBet(c, PlayerManager.pc);
+
+            ArrayList<Integer> rotations = spin(totalReels);
+            ArrayList<ArrayList> temp = new ArrayList<ArrayList>();
+            for (int i = 0; i < totalReels; i++) {
+                if (i == 0) {
+                    Collections.rotate(reel1, rotations.get(0));
+                    reels.add(reel1);
+                } else {
+                    ArrayList copy = (ArrayList) reelOther.clone();
+                    //System.out.println(copy.toString());
+                    Collections.rotate(copy, rotations.get(i));
+                    //System.out.println(copy.toString());
+                    reels.add(copy);
+                }
             }
-            else {
-                ArrayList copy = (ArrayList) reelOther.clone();
-                Collections.rotate(copy, rotations.get(i));
-                reels.add(copy);
-            }
+            System.out.println(reels.toString());
         }
     }
 
+    public void exit() {
+        if (PlayerManager.pc.getChips() > 0 ) {
+            System.out.println("You have cashed out with $" + PlayerManager.pc.getChips());
+        }
+    }
 
     public void display(String winner){
         ArrayList curReel = new ArrayList();

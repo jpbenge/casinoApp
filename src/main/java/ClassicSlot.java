@@ -15,36 +15,36 @@ public class ClassicSlot extends SlotMachines implements Slots {
 
     private ArrayList<ArrayList<Object>> payOuts = new ArrayList<ArrayList<Object>>();
     public void createPayOuts(int reels) {
-        ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList("Bar", "Bar", "Bar", 10));
+        ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList("Bar", "Bar", "Bar", 30));
         payOuts.add(temp);
 
 
-        temp = new ArrayList<Object>(Arrays.asList("Seven", "Seven", "Seven", 8));
+        temp = new ArrayList<Object>(Arrays.asList("Seven", "Seven", "Seven", 15));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Cherry", "Cherry", "Cherry", 5));
+        temp = new ArrayList<Object>(Arrays.asList("Cherry", "Cherry", "Cherry", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Lemon", "Lemon", "Lemon", 3));
+        temp = new ArrayList<Object>(Arrays.asList("Lemon", "Lemon", "Lemon", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Orange", "Orange", "Orange", 3));
+        temp = new ArrayList<Object>(Arrays.asList("Orange", "Orange", "Orange", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Diamond", "Diamond", "Diamond", 3));
+        temp = new ArrayList<Object>(Arrays.asList("Diamond", "Diamond", "Diamond", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Money", "Money", "Money", 3));
+        temp = new ArrayList<Object>(Arrays.asList("Money", "Money", "Money", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Heart", "Heart", "Heart", 3));
+        temp = new ArrayList<Object>(Arrays.asList("Heart", "Heart", "Heart", 8));
         payOuts.add(temp);
 
-        temp = new ArrayList<Object>(Arrays.asList("Cherry", "Cherry", "", 1.5));
+        temp = new ArrayList<Object>(Arrays.asList("Cherry", "Cherry", "", 3));
         payOuts.add(temp);
-        temp = new ArrayList<Object>(Arrays.asList("Cherry", "", "Cherry", 1.5));
+        temp = new ArrayList<Object>(Arrays.asList("Cherry", "", "Cherry", 3));
         payOuts.add(temp);
-        temp = new ArrayList<Object>(Arrays.asList("", "Cherry", "Cherry", 1.5));
+        temp = new ArrayList<Object>(Arrays.asList("", "Cherry", "Cherry", 3));
         payOuts.add(temp);
 
         temp = new ArrayList<Object>(Arrays.asList("Cherry", "", "", 1));
@@ -55,13 +55,16 @@ public class ClassicSlot extends SlotMachines implements Slots {
         payOuts.add(temp);
     }
 
-    public void exit() {
-        System.out.println("You have cashed out with $" + PlayerManager.pc.getChips());
-    }
 
-    public void start() {
+    public void start(int min, int max) {
+        setMinBet(min);
+        setMaxBet(max);
         Scanner scan = new Scanner(System.in);
         while (true) {
+            if (PlayerManager.pc.getChips() < minLimit) {
+                exit();
+                break;
+            }
             super.start(totalReels);
             createPayOuts(totalReels);
             String winner = super.calculateResults(payOuts);
@@ -69,7 +72,7 @@ public class ClassicSlot extends SlotMachines implements Slots {
             System.out.println("Do you want to spin again?y/n");
             String restart = scan.nextLine();
             System.out.println("Current Chip Count: $" + PlayerManager.pc.getChips());
-            if (restart.toLowerCase().contains("n")){
+            if (restart.toLowerCase().contains("n")) {
                 exit();
                 break;
             }
