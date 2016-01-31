@@ -23,7 +23,6 @@ public class BlackJack extends CardGame {
             dealAll();
             displayHands();
             evaluatePlayerHand();
-            checkTotal(PlayerManager.pc);
         }
 
     }
