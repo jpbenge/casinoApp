@@ -1,11 +1,15 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
  class Player {
-    private String name = "Peter";
-    private long currentChips = 100;
+    private String name;
+    private long currentChips = 1000;
     private boolean nPC = false;
+     private ArrayList<Hand> hands;
     //private HashMap gameHistory(String games, int gamesPlayed;
-
+    public Player() {
+        hands = new ArrayList<Hand>();
+     }
 
     public String getName() {
         return name;
@@ -28,5 +32,9 @@ import java.util.HashMap;
      public void removeChips(long chipsOff) {
          currentChips -= chipsOff;
      }
+     public ArrayList<Hand> getHands() {
+         return hands;
+     }
+
 }
 

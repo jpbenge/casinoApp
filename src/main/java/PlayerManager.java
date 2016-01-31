@@ -8,9 +8,10 @@ import java.util.*;
       //Scanner input = new Scanner("System.in");
       //String player = input.nextLine();
 
+      public static Player pc;
 
       public Player loadPlayer() {
-          Player me = new Player();
-          return me;
+          pc  = new Player();
+          return pc;
       }
   }

@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 abstract public class Game {
-    static Player p = new Player();
-    private ArrayList<String> playerList;
-    private String gameName;
-    private int minLimit = 10;
-    private int maxLimit = 100;
-    private int currentBet;
+
+    protected ArrayList<Player> playerList;
+    protected String gameName;
+    protected int minLimit = 10;
+    protected int maxLimit = 1000;
+    protected int currentBet;
 
 
     public int getCurrentBet() {
@@ -14,13 +14,13 @@ abstract public class Game {
         return currentBet;
     }
 
-    public void payOut(int chips) {
+    public void payOut(int chips,Player p) {
 
         p.addChips(chips);
     }
 
 
-    public void setCurrentBet(int chips) {
+    public void setCurrentBet(int chips, Player p) {
         if (chips < minLimit) {
             System.out.println("This bet is not high enough for this game.");
         } else if (chips > maxLimit) {
@@ -43,5 +43,8 @@ abstract public class Game {
 
     }
 
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
 
 }

@@ -17,6 +17,8 @@ public class HandTest {
         assertEquals("h's hand should now have a size of 1",1,h.getHand().size());
         assertEquals("first card in hand's suit should be DIAMONDS", Suit.DIAMONDS,h.getHand().get(0).getSuit());
         assertEquals("first card in hand's number should be 7", 7,h.getHand().get(0).getNumber());
+        h.addCard(new Card(Suit.DIAMONDS,3),false);
+        assertFalse(h.getHand().get(1).isFaceUp());
     }
 
     @Test

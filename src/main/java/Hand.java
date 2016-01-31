@@ -16,10 +16,13 @@ public class Hand {
     }
 
     public void addCard(Card c) {
+
         this.addCard(c,true);
     }
     public void addCard(Card c, boolean face) {
+        c.setFaceUp(face);
         hand.add(c);
+
     }
 
     public void removeCard(Card c)
@@ -34,12 +37,9 @@ public class Hand {
         return hand;
     }
 
-    public void deleteHand() {
-        hand = new ArrayList<Card>();
-    }
-
     public void sort() {
-        Collections.sort(hand, (Card c1,Card c2) -> c1.getNumber() > c2.getNumber() ? -1 : c2.getNumber() > c1.getNumber() ? 1 : 0);
+
+           Collections.sort(hand, (Card c1,Card c2) -> c1.getNumber() > c2.getNumber() ? -1 : c2.getNumber() > c1.getNumber() ? 1 : 0);
     }
 
     public void display() {
