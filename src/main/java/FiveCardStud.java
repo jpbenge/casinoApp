@@ -6,14 +6,14 @@ import java.util.StringJoiner;
 
 /**
  * Created by johnb on 1/31/16.
-<<<<<<< HEAD
 */
-public class FiveCardStud extends CardGame {
+public class FiveCardStud extends CardGame implements Poker{
     private int numOfDecks = 1;
     private boolean firstBettingRound;
     private boolean firstRound;
     private int curentBet;
     private Random random = new Random();
+
 
 
     Deck deck;
@@ -29,6 +29,7 @@ public class FiveCardStud extends CardGame {
             }
         }
         while (!exit) {
+            pot = 0;
             collectAnte();
             newRound();
             dealFirstRound();
@@ -37,27 +38,48 @@ public class FiveCardStud extends CardGame {
             displayHands();
             currentBet = 0;
             bettingRound();
+            checkFold();
             dealMiddleRound();
             firstRound = false;
             firstBettingRound = true;
             displayHands();
             bettingRound();
             firstBettingRound = true;
+            checkFold();
             dealMiddleRound();
             displayHands();
             bettingRound();
             firstBettingRound = true;
+            checkFold();
             dealFinalRound();
             displayHands();
+            checkFold();
             bettingRound();
-            //compareHands();
-            //distributePot();
-            //continuePrompt();
-            exit = true;
+            checkFold();
+            distributePot();
+            continuePrompt();
+
         }
 
     }
 
+    private void continuePrompt(){
+        System.out.println("Play again? Yes or No");
+        String ans = sc.nextLine();
+        if(ans.equals("yes")){
+            start();
+        }else if (ans.equals("no")){
+            exit = true;
+        }else{
+            System.out.println("Try again");
+            continuePrompt();
+        }
+
+    }
+
+    private void distributePot(){
+        playerList.get(5).addChips(pot);
+    }
     private void newRound() {
         deck = new Deck(numOfDecks);
         deck.shuffle();
@@ -115,6 +137,7 @@ public class FiveCardStud extends CardGame {
         }
         return 0;
     }
+
     private String getDecision(String[] args)
     {
         String message = "Would you like to ";
@@ -145,6 +168,7 @@ public class FiveCardStud extends CardGame {
 
         return input;
     }
+
     private void decision(Player p) {
         if (!p.isNPC()) {
             if (firstBettingRound && currentBet == 0) {
@@ -252,7 +276,7 @@ public class FiveCardStud extends CardGame {
             sc.nextLine();
         }
         else {
-            raise += 20;
+            raise += Math.random() *100;
         }
 
         currentBet += raise;
@@ -297,6 +321,21 @@ public class FiveCardStud extends CardGame {
         }
     }
 
+    private void checkFold(){
+        int foldedCount = 0;
+        for(Player p : playerList){
+            if(p.isFolded() == true){
+               foldedCount +=1;
+
+            }
+            if(foldedCount == 5){
+                System.out.println("Everybody Folded!");
+                continuePrompt();
+            }
+        }
+
+    }
+
     private void bettingRound() {
         currentBet = 0;
         int start = rankHand(firstRound);
@@ -314,7 +353,6 @@ public class FiveCardStud extends CardGame {
             playerMustCall = false;
             for (int i = start; i < start + playerList.size(); i++) {
                 if (!playerList.get(i% playerList.size()).isFolded()
-
                    && playerList.get(i% playerList.size()).getCurrentBet() < currentBet)
                 {
                     playerMustCall = true;
@@ -327,7 +365,7 @@ public class FiveCardStud extends CardGame {
     }
 
 
-        private void displayHands () {
+    private void displayHands () {
             for (int i = 1; i < playerList.size(); i++) {
                 if (!playerList.get(i).isFolded()) {
                     System.out.print("\nPlayer " + i + " \n");
