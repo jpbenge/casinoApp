@@ -4,12 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/FiveReelSlot.java" line="14" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b348759f-b297-42ae-8ef3-27609a847fe2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/FiveCardStud.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Poker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Suit.java" afterPath="$PROJECT_DIR$/src/main/java/Suit.java" />
-    </list>
+    <list default="true" id="b348759f-b297-42ae-8ef3-27609a847fe2" name="Default" comment="" />
     <ignored path="casinoApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,12 +58,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FiveCardStud.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FiveCardStud.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/FiveCardStud.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.93348116">
+            <state vertical-scroll-proportion="0.0">
               <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlotMachines.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SlotMachines.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.033259425">
+              <caret line="75" column="38" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="38" />
+              <folding>
+                <element signature="e#1286#1294#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -802,7 +809,7 @@
       <workItem from="1454254312386" duration="10000" />
       <workItem from="1454255983366" duration="4222000" />
       <workItem from="1454261896789" duration="12674000" />
-      <workItem from="1454288111227" duration="1810000" />
+      <workItem from="1454288111227" duration="1919000" />
     </task>
     <servers />
   </component>
@@ -839,7 +846,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55018000" />
+    <option name="totallyTimeSpent" value="55127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="548" extended-state="0" />
@@ -1132,16 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SlotMachines.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="38" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="38" />
-          <folding>
-            <element signature="e#1286#1294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BlackJack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3327787">
@@ -1278,9 +1275,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FiveCardStud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93348116">
+        <state vertical-scroll-proportion="0.0">
           <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SlotMachines.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.033259425">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="38" />
+          <folding>
+            <element signature="e#1286#1294#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
