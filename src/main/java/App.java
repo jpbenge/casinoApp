@@ -23,7 +23,7 @@ public class App {
         playerManager.loadPlayer();
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter your name to get started: ");
+        System.out.println("Enter your name to load or create your profile:  ");
         String name = scan.nextLine();
 
         PlayerManager.pc.setName(name);

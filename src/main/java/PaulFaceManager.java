@@ -10,7 +10,7 @@ public class PaulFaceManager {
     {
         audMan.play();
         int i = 0;
-        while (i < 0) {
+        while (i < 5 {
             try {
 
                 displayPaulMessage("paulface.txt");

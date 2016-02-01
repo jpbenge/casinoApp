@@ -241,6 +241,7 @@ public class BlackJack extends CardGame {
         ddPlayer.removeChips(currentBet);
         currentBet *= 2;
         hit(ddPlayer);
+
     }
 
     private void split() {
