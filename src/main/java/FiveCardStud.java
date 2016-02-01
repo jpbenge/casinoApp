@@ -13,6 +13,10 @@ public class FiveCardStud extends CardGame implements Poker{
     private boolean firstRound;
     private int curentBet;
     private Random random = new Random();
+    AudioManager multiCardDeal = new AudioManager("cardShuffle.wav");
+    AudioManager multiCardDealStud = new AudioManager("cardShuffleStud.wav");
+    AudioManager singleCardDeal = new AudioManager("cardPlace1.wav");
+    AudioManager chipsStack = new AudioManager("chipsStack.wav");
 
 
 
@@ -56,7 +60,8 @@ public class FiveCardStud extends CardGame implements Poker{
             checkFold();
             bettingRound();
             checkFold();
-            distributePot();
+            ArrayList<Integer> winners = Poker(playerList);
+            distributePot(winners);
             continuePrompt();
 
         }
@@ -77,13 +82,39 @@ public class FiveCardStud extends CardGame implements Poker{
 
     }
 
-    private void distributePot(){
-        playerList.get(5).addChips(pot);
+    private void distributePot(ArrayList<Integer> win){
+
+
+        for (Player p : playerList)
+        {
+            if (!p.isFolded())
+            {
+                for (Card c : p.getHands().get(0).getHand())
+                {
+                    c.setFaceUp(true);
+                }
+
+            }
+
+        }
+        displayHands();
+
+        if (win.contains(PlayerManager.pc))
+        {
+            System.out.println("You won the hand!");
+            System.out.println("Payout: "+ pot/win.size());
+            PlayerManager.pc.addChips(pot/win.size());
+        }
+        else
+        {
+            System.out.println("You lost the hand");
+        }
     }
     private void newRound() {
         deck = new Deck(numOfDecks);
         deck.shuffle();
         for (Player p : playerList) {
+            p.setFolded(false);
             p.getHands().clear();
             p.getHands().add(new Hand());
         }
@@ -92,6 +123,8 @@ public class FiveCardStud extends CardGame implements Poker{
 
     //deal everybody 2 cards
     private void dealFirstRound() {
+        multiCardDealStud.play();
+
         for (int i = 1; i < playerList.size(); i++) {
             playerList.get(i).getHands().get(0).addCard(deck.dealCard(), false);
             playerList.get(i).getHands().get(0).addCard(deck.dealCard());
@@ -103,6 +136,8 @@ public class FiveCardStud extends CardGame implements Poker{
     }
 
     private void dealMiddleRound() {
+        multiCardDeal.play();
+
         for (int i = 0; i < playerList.size(); i++)
         {
             playerList.get(i).getHands().get(0).addCard(deck.dealCard());
@@ -110,6 +145,8 @@ public class FiveCardStud extends CardGame implements Poker{
     }
 
     private void dealFinalRound() {
+        singleCardDeal.play();
+
         for (int i = 1; i < playerList.size(); i++) {
             playerList.get(i).getHands().get(0).addCard(deck.dealCard(), false);
         }
@@ -258,6 +295,15 @@ public class FiveCardStud extends CardGame implements Poker{
                 System.out.println("NPC called");
             }
         }
+
+        chipsStack.play();
+
+        try {
+            Thread.sleep(1000);                //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
         p.setCurrentBet(currentBet);
         p.removeChips(currentBet);
         pot += currentBet;
@@ -313,7 +359,7 @@ public class FiveCardStud extends CardGame implements Poker{
     public void fold(Player p) {
         p.setFolded(true);
         if (!p.isNPC()) {
-
+            continuePrompt();
         }
         else
         {
