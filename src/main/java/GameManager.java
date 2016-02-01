@@ -17,6 +17,13 @@ public class GameManager {
             if (gameType.contains("table")) {
                 System.out.println("What game would you like to play?\n\n BlackJack or 5 card stud?");
                 String gameChoice = sc.nextLine().toLowerCase();
+
+                System.out.println("Would you like to play or see rules?");
+                String process = sc.nextLine();
+                if (process.contains("rule")) {
+                    Rules rule = new Rules();
+                    rule.rules(gameChoice);
+                }
                 switch (gameChoice) {
                     case "blackjack":
                         System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
@@ -24,7 +31,7 @@ public class GameManager {
                         blackJack.start();
 
                         break;
-                    case "5 card poker":
+                    case "5 card stud":
                         System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                         FiveCardStud fiveCardStud = new FiveCardStud();
                         fiveCardStud.start();
@@ -40,6 +47,12 @@ public class GameManager {
             else if(gameType.contains("slots")) {
                 System.out.println("What game would you like to play?\n\n 3 Reel or 5 Reel slots?");
                 String gameChoice = sc.nextLine().toLowerCase();
+                System.out.println("Would you like to play or see rules?");
+                String process  = sc.nextLine();
+                if (process.contains("rule")) {
+                    Rules rule = new Rules();
+                    rule.rules(gameChoice);
+                }
                 int gameMin = 10;
                 if (gameChoice.contains("5")) {
                     while(true) {

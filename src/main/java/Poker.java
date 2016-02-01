@@ -6,21 +6,21 @@ import java.util.Arrays;
  */
 public interface Poker{
 
-    int collectAnte();
+    //int collectAnte();
 
-    Player compareHand();
+    //Player compareHand();
 
-    void dealRound(boolean x);
+    //void dealRound(boolean x);
 
     void displayHands();
 
-    void allBet();
+    //void allBet();
 
     default void fold(Player player) {
         player.getHands().get(0).getHand().clear();
     }
 
-
+    /*
     default ArrayList<Integer> Poker(ArrayList<Integer> hands) {
         ArrayList<Integer> winners = new ArrayList<>();
         int actOn = -1;
@@ -544,5 +544,5 @@ public interface Poker{
             }
         }
         return winners;
-    }
+    }*/
 }

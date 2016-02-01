@@ -310,7 +310,7 @@ public class FiveCardStud extends CardGame implements Poker{
     }
 
 
-    private void fold(Player p) {
+    public void fold(Player p) {
         p.setFolded(true);
         if (!p.isNPC()) {
 
@@ -365,7 +365,7 @@ public class FiveCardStud extends CardGame implements Poker{
     }
 
 
-    private void displayHands () {
+    public void displayHands () {
             for (int i = 1; i < playerList.size(); i++) {
                 if (!playerList.get(i).isFolded()) {
                     System.out.print("\nPlayer " + i + " \n");

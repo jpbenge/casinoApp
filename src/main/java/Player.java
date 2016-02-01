@@ -37,7 +37,6 @@ import java.util.Comparator;
             br.close();
         }
         catch(Exception e) {
-            System.out.println(e);
             try {
                 PrintWriter writer = new PrintWriter(curName + ".txt", "UTF-8");
                 writer.print("1000");
