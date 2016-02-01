@@ -107,7 +107,15 @@ public class BlackJack extends CardGame {
 
         } else if (total == 21) {
             System.out.println("21!");
-            stay();
+            if (PlayerManager.pc.getHands().get(0).getHand().size() == 2)
+            {
+                System.out.println("Blackjack Payout: "+(int)(currentBet*1.5));
+                payOut((currentBet + (int)(1.5*(currentBet))),PlayerManager.pc);
+                askPlayAgain();
+            }
+            else {
+                stay();
+            }
         } else
         {
             askNextStep();
@@ -153,8 +161,7 @@ public class BlackJack extends CardGame {
                 break;
             case "double down":
                 doubleDown(PlayerManager.pc);
-                displayHands();
-                evaluatePlayerHand();
+                stay();
                 break;
             default:
                 System.out.println("Computer Error - come back tomorrow");
