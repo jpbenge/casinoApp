@@ -57,8 +57,8 @@ public class ClassicSlot extends SlotMachines implements Slots {
 
 
     public void start(int min, int max) {
-        setMinBet(min);
-        setMaxBet(max);
+        setMinLimit(min);
+        setMaxLimit(max);
         Scanner scan = new Scanner(System.in);
         while (true) {
             if (PlayerManager.pc.getChips() < minLimit) {
@@ -80,5 +80,3 @@ public class ClassicSlot extends SlotMachines implements Slots {
     }
 
 }
-
-

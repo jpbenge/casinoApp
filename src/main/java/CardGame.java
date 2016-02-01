@@ -17,9 +17,4 @@ abstract public class CardGame extends Game {
         }
     }
 
-    private void takeAnte() {
-    //    p.removeChips(ante);
-
-    }
-
 }

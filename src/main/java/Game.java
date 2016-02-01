@@ -15,16 +15,13 @@ abstract public class Game {
     protected int ante = 20;
     protected int pot = 0;
 
-
-
-
-    public void setMinBet(int a) {
+    protected void setMinLimit(int a) {
+        System.out.println(a);
         minLimit = a;
     }
-    public void setMaxBet(int a) {
+    protected  void setMaxLimit(int a) {
         maxLimit = a;
     }
-
     public int getCurrentBet() {
 
         return currentBet;
@@ -80,6 +77,5 @@ abstract public class Game {
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }
-
 
 }

@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class GameManager {
@@ -21,16 +22,20 @@ public class GameManager {
                         System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                         BlackJack blackJack = new BlackJack();
                         blackJack.start();
+
                         break;
                     case "5 card poker":
                         System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
                         FiveCardStud fiveCardStud = new FiveCardStud();
                         fiveCardStud.start();
+                        exit();
                         break;
                     default:
                         System.out.println("That game does not exist in our Casino.");
                         break;
                 }
+                System.out.println(PlayerManager.pc.getName() + "'s current Chip Count: $" + PlayerManager.pc.getChips());
+                gameType = null;
             }
             else if(gameType.contains("slots")) {
                 System.out.println("What game would you like to play?\n\n 3 Reel or 5 Reel slots?");
@@ -39,9 +44,10 @@ public class GameManager {
                 if (gameChoice.contains("5")) {
                     while(true) {
                         try {
+
                             System.out.println("Would you like to play 1 dollar slots, 5 dollar slots, or 10 dollar slots?");
-                            gameMin = sc.nextInt();
-                            System.out.println();
+                            String gameMinString = sc.nextLine();
+                            gameMin = Integer.valueOf(gameMinString);
                             if (gameMin != 1 && gameMin != 5 && gameMin != 10) {
                                 System.out.println("Error: That was not an option.");
                                 continue;
@@ -58,8 +64,8 @@ public class GameManager {
                     while(true) {
                         try {
                             System.out.println("Would you like to play 1 dollar slots, 5 dollar slots, or 10 dollar slots?");
-                            gameMin = sc.nextInt();
-                            System.out.println();
+                            String gameMinString = sc.nextLine();
+                            gameMin = Integer.valueOf(gameMinString);
                             if (gameMin != 1 && gameMin != 5 && gameMin != 10) {
                                 System.out.println("Error: That was not an option.");
                                 continue;
@@ -75,6 +81,7 @@ public class GameManager {
                 } else {
                     System.out.println("That game does not exist in our Casino.");
                 }
+                gameType = null;
             }
             else if(gameType.contains("leave")){
                 exit();
@@ -82,7 +89,9 @@ public class GameManager {
             }
             else {
                 System.out.println("Invalid Game Type.");
+                gameType = null;
             }
+            gameType = null;
         }
 
     }
@@ -92,8 +101,16 @@ public class GameManager {
     }
 
     public void exit() {
-
         System.out.println(PlayerManager.pc.getName() + ", you have cashed out with $" +PlayerManager.pc.getChips());
+
+        try {
+            PrintWriter writer = null;
+            writer = new PrintWriter(PlayerManager.pc.getName() + ".txt", "UTF-8");
+            writer.print(PlayerManager.pc.getChips());
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Error Saving profile");
+        }
     }
 
     public static void main(String[] args) {

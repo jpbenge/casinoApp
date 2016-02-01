@@ -1,13 +1,15 @@
 import javafx.print.PageLayout;
-
 import java.util.ArrayList;
 import java.util.SortedMap;
 
-/**
- * Created by johnb on 1/30/16.
- */
-public class BlackJack extends CardGame {
 
+
+
+public class BlackJack extends CardGame {
+    AudioManager multiCardDeal = new AudioManager("cardShuffle.wav");
+    AudioManager singleCardDeal = new AudioManager("cardPlace1.wav");
+    AudioManager chipsStack = new AudioManager("chipsStack.wav");
+    AudioManager winPot = new AudioManager("winPot.wav");
     private int numOfDecks = 3;
 
     private boolean exit = false;
@@ -51,6 +53,14 @@ public class BlackJack extends CardGame {
         System.out.println("How much would you like to bet?");
         int bet = sc.nextInt();
         sc.nextLine();
+        chipsStack.play();                      //Play a sound of chips stacking
+
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
         setCurrentBet(bet, PlayerManager.pc);
 
         System.out.println(PlayerManager.pc.getName() + "'s current bet: "+currentBet);
@@ -71,6 +81,8 @@ public class BlackJack extends CardGame {
 
     //deal everybody 2 cards
     private void dealAll() {
+        multiCardDeal.play();               //PLay sound of multiple cards being dealt.
+
         for (int i = 0; i < (playerList.size() -2); i++) {
            playerList.get(i).getHands().get(0).addCard(deck.dealCard());
            playerList.get(i).getHands().get(0).addCard(deck.dealCard());
@@ -151,6 +163,7 @@ public class BlackJack extends CardGame {
         switch (answer) {
             case "hit":
                 hit(PlayerManager.pc);
+                singleCardDeal.play();          //Play sound of a single card being dealt
                 displayHands();
                 evaluatePlayerHand();
                 break;
@@ -161,6 +174,7 @@ public class BlackJack extends CardGame {
                 break;
             case "double down":
                 doubleDown(PlayerManager.pc);
+                singleCardDeal.play();          //Play sound of a single card being dealt
                 stay();
                 break;
             default:
@@ -182,12 +196,14 @@ public class BlackJack extends CardGame {
         if (checkTotal(playerList.get(playerList.size()-1)) > 21)
         {
             System.out.println("Dealer busts. You Win!");
+            winPot.play();
             System.out.println("Payout: "+currentBet);
             payOut(currentBet*2,PlayerManager.pc);
         }
         else if (checkTotal(playerList.get(0)) > checkTotal(playerList.get(playerList.size()-1)))
         {
             System.out.println("You beat the dealer!");
+            winPot.play();
             System.out.println("Payout: "+currentBet);
             payOut(currentBet*2,PlayerManager.pc);
         }

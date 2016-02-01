@@ -16,7 +16,7 @@ public class App {
         String name = scan.nextLine();
 
         PlayerManager.pc.setName(name);
-        
+
 
         gameManager.start();
     }

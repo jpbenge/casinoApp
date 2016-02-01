@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -175,7 +174,7 @@ public class SlotMachines extends ChanceGames implements Slots {
             display[9] = "                         ";
         }
         else if (word == "Money") {
-                          //-_-_-_-_-_-_-_-_-_
+            //-_-_-_-_-_-_-_-_-_
             display[0] = "         ##              ";
             display[1] = "     #########           ";
             display[2] = "    ##   ##  ##          ";
@@ -188,7 +187,7 @@ public class SlotMachines extends ChanceGames implements Slots {
             display[9] = "         ##              ";
         }
         else if (word == "Heart") {
-                          //-_-_-_-_-_-_-_-_-_
+            //-_-_-_-_-_-_-_-_-_
             display[0] = "                         ";
             display[1] = "    ####    ####         ";
             display[2] = "   ######  ######        ";
