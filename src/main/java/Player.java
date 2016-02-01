@@ -1,27 +1,32 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
- class Player {
+
+class Player {
     private String name;
     private long currentChips = 1000;
     private boolean nPC = false;
-     private boolean folded = false;
-     private ArrayList<Hand> hands;
-     private int currentBet;
+    private boolean folded = false;
+    private ArrayList<Hand> hands;
+    private int currentBet;
+
     //private HashMap gameHistory(String games, int gamesPlayed;
     public Player() {
         hands = new ArrayList<Hand>();
-     }
-
+    }
     public String getName() {
         return name;
     }
+
     public void setName(String curName) {
         name = curName;
+        System.out.println("Welcome " + name);
     }
+
     public boolean isNPC() {
         return nPC;
     }
+
     public void setNPC(boolean pnPC) {
         nPC = pnPC;
     }

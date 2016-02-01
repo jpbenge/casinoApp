@@ -6,6 +6,7 @@ import java.util.StringJoiner;
 
 /**
  * Created by johnb on 1/31/16.
+<<<<<<< HEAD
 */
 public class FiveCardStud extends CardGame {
     private int numOfDecks = 1;
@@ -313,6 +314,7 @@ public class FiveCardStud extends CardGame {
             playerMustCall = false;
             for (int i = start; i < start + playerList.size(); i++) {
                 if (!playerList.get(i% playerList.size()).isFolded()
+
                    && playerList.get(i% playerList.size()).getCurrentBet() < currentBet)
                 {
                     playerMustCall = true;

@@ -10,6 +10,7 @@ public class BlackJack extends CardGame {
 
     private int numOfDecks = 3;
 
+    private boolean exit = false;
     //int total;
 
     private Deck deck;
@@ -27,6 +28,16 @@ public class BlackJack extends CardGame {
 
     }
 
+    //add players to the player list
+    protected void initPlayers() {
+        playerList = new ArrayList<Player>();
+        playerList.add(PlayerManager.pc);
+        for (int i = 0; i < 5; i++) {
+            Player npc = new Player();
+            npc.setNPC(true);
+            playerList.add(npc);
+        }
+    }
     //clear any previous hands and re-shuffle deck
     private void newRound() {
         deck = new Deck(numOfDecks);
@@ -36,12 +47,13 @@ public class BlackJack extends CardGame {
             p.getHands().clear();
             p.getHands().add(new Hand());
         }
-        System.out.println("You have "+PlayerManager.pc.getChips()+" chips");
+        System.out.println(PlayerManager.pc.getName() + ", you have "+PlayerManager.pc.getChips()+" chips");
         System.out.println("How much would you like to bet?");
         int bet = sc.nextInt();
         sc.nextLine();
         setCurrentBet(bet, PlayerManager.pc);
-        System.out.println("Current bet: "+currentBet);
+
+        System.out.println(PlayerManager.pc.getName() + "'s current bet: "+currentBet);
     }
     //return the correct value for a card
     private int checkCard(Card c) {

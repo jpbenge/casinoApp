@@ -16,6 +16,15 @@ abstract public class Game {
     protected int pot = 0;
 
 
+
+
+    public void setMinBet(int a) {
+        minLimit = a;
+    }
+    public void setMaxBet(int a) {
+        maxLimit = a;
+    }
+
     public int getCurrentBet() {
 
         return currentBet;
@@ -71,5 +80,6 @@ abstract public class Game {
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }
+
 
 }
