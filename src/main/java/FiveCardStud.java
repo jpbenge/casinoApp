@@ -22,8 +22,8 @@ public class FiveCardStud extends CardGame implements Poker{
 
     Deck deck;
 
+    String quit = "no";
     public void start() {
-        exit = false;
         initPlayers();
         for (Player p : playerList)
         {
@@ -32,7 +32,10 @@ public class FiveCardStud extends CardGame implements Poker{
                 p.addChips(100000000000L);
             }
         }
-        while (!exit) {
+        while (quit == "no") {
+            if (quit == "yes"){
+                break;
+            }
             pot = 0;
             collectAnte();
             newRound();
@@ -43,6 +46,9 @@ public class FiveCardStud extends CardGame implements Poker{
             currentBet = 0;
             bettingRound();
             checkFold();
+            if (quit == "yes"){
+                break;
+            }
             dealMiddleRound();
             firstRound = false;
             firstBettingRound = true;
@@ -50,16 +56,28 @@ public class FiveCardStud extends CardGame implements Poker{
             bettingRound();
             firstBettingRound = true;
             checkFold();
+            if (quit == "yes"){
+                break;
+            }
             dealMiddleRound();
             displayHands();
             bettingRound();
             firstBettingRound = true;
             checkFold();
+            if (quit == "yes"){
+                break;
+            }
             dealFinalRound();
             displayHands();
             checkFold();
+            if (quit == "yes"){
+                break;
+            }
             bettingRound();
             checkFold();
+            if (quit == "yes"){
+                break;
+            }
             ArrayList<Integer> winners = Poker(playerList);
             distributePot(winners);
             continuePrompt();
@@ -74,7 +92,7 @@ public class FiveCardStud extends CardGame implements Poker{
         if(ans.equals("yes")){
             start();
         }else if (ans.equals("no")){
-            exit = true;
+            quit = "yes";
         }else{
             System.out.println("Try again");
             continuePrompt();
@@ -357,7 +375,10 @@ public class FiveCardStud extends CardGame implements Poker{
 
 
     public void fold(Player p) {
-        p.setFolded(true);
+        for (Player pc : playerList)
+        {
+            pc.setFolded(true);
+        }
         if (!p.isNPC()) {
             continuePrompt();
         }

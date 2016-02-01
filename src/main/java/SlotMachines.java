@@ -90,6 +90,8 @@ public class SlotMachines extends ChanceGames implements Slots {
 
         String winShow = new String();
         if (winner == "yes") {
+            AudioManager am = new AudioManager("slotsWIN.wav");
+            am.play();
             winShow = "#      # ##### #   # #   # #### ###   #\n" +
                     "#      #   #   ##  # ##  # #    #  #  #\n" +
                     "#  ##  #   #   # # # # # # ###  ###   #\n" +

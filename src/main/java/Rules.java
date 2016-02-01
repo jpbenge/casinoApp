@@ -24,7 +24,7 @@ public class Rules {
             "Each player is dealt one card face down and one face up, and there is a betting round.\n" +
                     "Each player is dealt a third card face up. There is a second betting round.\n" +
             "Each player is dealt a fourth card face up. There is a third betting round.\n" +
-            "Each player is dealt a fifth and card face up. There is a fourth betting round.\n" +
+            "Each player is dealt a fifth and card face down. There is a fourth betting round.\n" +
             "Surviving players show their cards and the best five-card hand wins the pot.\n\n" +
                     "The rank of hands from lowest to highest is:\n" +
 
@@ -41,7 +41,7 @@ public class Rules {
             "straight flush");
 
         }
-        else if (gameName.toLowerCase().contains("slots")) {
+        else if (gameName.toLowerCase().contains("slots") || gameName.toLowerCase().contains("5") || gameName.toLowerCase().contains("3")) {
             System.out.println("The player places a bet.\n" +
                     "The reels will spin randomly.\n" +
                     "If the reels make a combination that is consider a \"Winner\", the slot will pay out the winning amount.\n\n"

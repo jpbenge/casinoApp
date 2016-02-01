@@ -65,9 +65,11 @@ public class ClassicSlot extends SlotMachines implements Slots {
                 exit();
                 break;
             }
+
             super.start(totalReels);
             createPayOuts(totalReels);
             String winner = super.calculateResults(payOuts);
+
             super.display(winner);
             System.out.println("Do you want to spin again?y/n");
             String restart = scan.nextLine();

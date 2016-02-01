@@ -3,6 +3,7 @@ import sun.jvm.hotspot.ui.SourceCodePanel;
 import sun.util.resources.cldr.sr.CalendarData_sr_Cyrl_RS;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 abstract public class Game {
@@ -58,8 +59,17 @@ abstract public class Game {
                 System.out.println("This bet exceeds the limit for this game.");
                 System.out.println("Maximum bet: "+maxLimit);
             }
-            chips = sc.nextInt();
-            sc.nextLine();
+            while(true){
+                try{
+                   chips = sc.nextInt();
+                    System.out.println(" ");
+                    break;
+                } catch (InputMismatchException exception){
+                    System.out.print("Numbers only!");
+                    sc.nextLine();
+                }
+            }
+
         }
         currentBet = chips;
         p.removeChips(currentBet);

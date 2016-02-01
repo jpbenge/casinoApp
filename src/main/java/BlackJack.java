@@ -1,5 +1,6 @@
 import javafx.print.PageLayout;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.SortedMap;
 
 
@@ -50,9 +51,21 @@ public class BlackJack extends CardGame {
             p.getHands().add(new Hand());
         }
         System.out.println(PlayerManager.pc.getName() + ", you have "+PlayerManager.pc.getChips()+" chips");
-        System.out.println("How much would you like to bet?");
-        int bet = sc.nextInt();
-        sc.nextLine();
+       String bet2 = "";
+        int bet = 0;
+        while(true) {
+
+            //try {
+                System.out.println("How much would you like to bet?");
+                bet2 = sc.nextLine();
+            try {
+                bet = Integer.valueOf(bet2);
+                break;
+            }
+          catch (Exception e) {
+                System.out.println("Please enter a bet");
+            }
+        }
         chipsStack.play();                      //Play a sound of chips stacking
 
         try {
