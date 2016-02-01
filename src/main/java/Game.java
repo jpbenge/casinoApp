@@ -12,6 +12,8 @@ abstract public class Game {
     protected int minLimit = 10;
     protected int maxLimit = 1000;
     protected int currentBet;
+    protected int ante = 20;
+    protected int pot = 0;
 
 
     public int getCurrentBet() {
@@ -22,6 +24,13 @@ abstract public class Game {
     public void payOut(int chips,Player p) {
 
         p.addChips(chips);
+    }
+    protected int collectAnte() {
+        for(Player p :playerList) {
+            p.removeChips(ante);
+            pot += ante;
+        }
+        return pot;
     }
 
 

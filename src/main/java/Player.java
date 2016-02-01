@@ -5,7 +5,9 @@ import java.util.HashMap;
     private String name;
     private long currentChips = 1000;
     private boolean nPC = false;
+     private boolean folded = false;
      private ArrayList<Hand> hands;
+     private int currentBet;
     //private HashMap gameHistory(String games, int gamesPlayed;
     public Player() {
         hands = new ArrayList<Hand>();
@@ -23,7 +25,24 @@ import java.util.HashMap;
     public void setNPC(boolean pnPC) {
         nPC = pnPC;
     }
-    public long getChips() {
+
+     public boolean isFolded() {
+         return folded;
+     }
+
+     public void setFolded(boolean folded) {
+         this.folded = folded;
+     }
+
+     public void setCurrentBet(int currentBet) {
+         this.currentBet = currentBet;
+     }
+
+     public int getCurrentBet() {
+         return currentBet;
+     }
+
+     public long getChips() {
         return currentChips;
     }
     public void addChips(long chipsAdd) {

@@ -9,7 +9,7 @@ import java.util.SortedMap;
 public class BlackJack extends CardGame {
 
     private int numOfDecks = 3;
-    private boolean exit = false;
+
     //int total;
 
     private Deck deck;
@@ -26,16 +26,7 @@ public class BlackJack extends CardGame {
         }
 
     }
-    //add players to the player list
-    private void initPlayers() {
-        playerList = new ArrayList<Player>();
-        playerList.add(PlayerManager.pc);
-        for (int i = 0; i < 5; i++) {
-            Player npc = new Player();
-            npc.setNPC(true);
-            playerList.add(npc);
-        }
-    }
+
     //clear any previous hands and re-shuffle deck
     private void newRound() {
         deck = new Deck(numOfDecks);

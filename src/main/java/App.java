@@ -15,9 +15,9 @@ public static void main (String[] args) {
    // Scanner input = new Scanner("System.in");
    // String player = input.nextLine();
 
-    BlackJack blackJack = new BlackJack();
+    FiveCardStud fc = new FiveCardStud();
     playerManager.loadPlayer();
-    blackJack.start();
+    fc.start();
     System.out.println(PlayerManager.pc.getChips());
 }
 
